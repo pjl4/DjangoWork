@@ -1,1 +1,3 @@
-# Use django to create project folders here
+#########################
+
+Repository for all Django work for Class
