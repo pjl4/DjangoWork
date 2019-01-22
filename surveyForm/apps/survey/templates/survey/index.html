@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Survey Form</title>
+
+        <!-- Bootstrap CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <h1 class="text-center">Survey Form</h1>
+        
+        <form action="/process/" method="post" class="form" role="form">
+            {% csrf_token %} 
+        
+            <div class="form-group">
+                <label for="">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Marty McFly">
+            </div>
+            <div class="form-group">
+                <label for="">Location</label>
+                <select name="location" id="location" >
+                    <option value='Berkley'>Berkley</option>
+                    <option value='Boise'>Boise</option>
+                    <option value='Chicago'>Chicago</option>
+                    <option value='Dallas'>Dallas</option>
+                    <option value='Los Angeles'>Los Angeles</option>
+                    <option value='Orange County'>Orange County</option>
+                    <option value='Seattle'>Seattle</option>
+                    <option value='Silicon Valley'>Silicon Valley</option>
+                    <option value='Tulsa'>Tulsa</option>
+                    <option value='Tysons Corner'>Tysons Corner</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="">Favorite Language</label>
+                <select name='language' id='language'>
+                    <option value='Python'>Python</option>
+                    <option value='JavaScript'>JavaScript</option>
+                    <option value='Java'>Java</option>
+                </select>   
+            </div>
+            
+            <label for="comment">Comment</label>
+            <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Bootstrap JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </body>
+</html>
