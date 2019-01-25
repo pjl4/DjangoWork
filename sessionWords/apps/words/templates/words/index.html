@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Session Words</title>
+
+        <!-- Bootstrap CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <style> 
+            .green{
+                color:green;
+            }
+            .blue{
+                color: blue;
+            }
+            .black{
+                color:black;
+            }
+            .red{
+                color:red;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="text-center">Add a New Word</h1>
+        <div class="col-md-6">
+            <form action="/session_words/add_words/" method="POST" role="form">  
+                {% csrf_token %}      
+                <div class="form-group">
+                    <input type="text"  class="form" id="word" name="word" placeholder="Add your word here">
+                </div>
+                <div class="form-group">
+                    <div class="radio">
+                        <h5>Choose color</h5>
+                        <input type="hidden" name="color" value="black">
+                        <label>
+                            <input type="radio" name="color" id="input" value="red">
+                            Red
+                        </label>
+                        <label>
+                            <input type="radio" name="color" id="input" value="green" >
+                            Green
+                        </label>
+                        <label>
+                            <input type="radio" name="color" id="input" value="blue" >
+                            Blue
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="big" value="1">
+                        show in BIG fonts
+                    </label> 
+                </div>
+                
+            
+                <button type="submit" class="btn btn-primary">Add to Session</button>
+            </form>
+        </div>
+        {%for word in request.session.words%}
+            {%if word.big == 1%}
+                <h1 class ="{{word.color}}">{{word.word}}</h1> <p>Added on {{word.time}}</p>
+            {%endif%}
+            {%if word.big == 0%}
+                <p class ="{{word.color}}">{{word.word}}</p> <p>Added on {{word.time}}</p>
+            {%endif%}
+        {%endfor%}
+        
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Bootstrap JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </body>
+</html>
