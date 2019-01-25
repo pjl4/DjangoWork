@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Ninja Gold</title>
+
+        <!-- Bootstrap CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+<body>
+    <div class="top_container">
+        <label for="gold">Your Gold: </label>
+        <input type="text" value='{{request.session.gold}}' readonly>
+    </div>
+    <div class="farm_container col-sm-3">
+        <h1>Farm</h1>
+        <h3>(Earns 10-20 gold)</h3>
+        <form action="process/" method="POST">
+            {%csrf_token%}
+            <input type="hidden" name="building" value="farm" />
+            <input type="submit" value="Find Gold!"/>
+        </form>
+    </div>
+    <div class="cave_container col-sm-3">
+        <h1>Cave</h1>
+        <h3>(Earns 5-10 gold)</h3>
+        <form action="process/" method="POST">
+            {%csrf_token%}
+            <input type="hidden" name="building" value="cave" />
+            <input type="submit" value="Find Gold!"/>
+        </form>
+    </div>
+    <div class="house_container col-sm-3">
+        <h1>House</h1>
+        <h3>(Earns 2-5 gold)</h3>
+        <form action="process/" method="POST">
+            {%csrf_token%}
+            <input type="hidden" name="building" value="house" />
+            <input type="submit" value="Find Gold!"/>
+        </form>
+     </div>
+    <div class="casino_container col-sm-3">
+        <h1>Casino</h1>
+        <h3>(earns/takes 0-50 gold)</h3>
+        <form action="process/" method="POST">
+            {%csrf_token%}
+            <input type="hidden" name="building" value="casino" />
+            <input type="submit" value="Find Gold!"/>
+        </form>
+    </div>
+    <div class="activityContainer">
+        <h1>Activity</h1>
+        <textarea name="activity" id="activity" cols="30" rows="10">
+            {%for activity in request.session.activity%}
+                {{activity.activity}}
+            {%endfor%}
+        </textarea>
+    </div>
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Bootstrap JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </body>
+</html>
