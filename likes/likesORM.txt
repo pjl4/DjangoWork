@@ -1,0 +1,51 @@
+User.objects.create(first_name="Rick",last_name="Sanchez",email="science@portal.com")
+User.objects.create(first_name="Ricky",last_name="Bobby",email="fast@first.com")
+User.objects.create(first_name="Marty",last_name="McFly",email="future88@future.com")
+
+Book.objects.create(name="soccernomics",desc="Soccernomics",uploaded_by=User.objects.get(id=2))
+Book.objects.create(name="The Republic",desc="Platos The Republic",uploaded_by=User.objects.get(id=2))
+
+Book.objects.create(name="The Alchemist",desc="Coelho's The Alchemist",uploaded_by=User.objects.get(id=1))
+Book.objects.create(name="Candide",desc="Voltaire's Candide",uploaded_by=User.objects.get(id=1))
+
+Book.objects.create(name="Waiting for Godot",desc="Beckett's Waiting for Godot",uploaded_by=User.objects.get(id=3))
+Book.objects.create(name="Brave New World",desc="Huxley's Brave New World",uploaded_by=User.objects.get(id=3))
+
+book= Book.objects.first()
+user= User.objects.first()
+user.likes.add(book)
+
+book=Book.objects.last()
+user.likes.add(book)
+
+book= Book.objects.first()
+user= User.objects.get(id=2)
+user.likes.add(book)
+
+book= Book.objects.get(id=3)
+user.likes.add(book)
+
+user= User.objects.get(id=3)
+book=Book.objects.first()
+user.likes.add(book)
+
+book=Book.objects.get(id=2)
+user.likes.add(book)
+
+book=Book.objects.get(id=3)
+user.likes.add(book)
+
+book=Book.objects.get(id=4)
+user.likes.add(book)
+
+book=Book.objects.get(id=5)
+user.likes.add(book)
+
+book=Book.objects.get(id=6)
+user.likes.add(book)
+
+Book.objects.first().likes.values()
+Book.objects.first().uploaded_by
+
+Book.objects.get(id=2).likes.values()
+Book.objects.get(id=2).uploaded_by
